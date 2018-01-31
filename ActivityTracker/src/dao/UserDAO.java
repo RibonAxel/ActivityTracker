@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import model.User;
 
@@ -19,15 +20,21 @@ public class UserDAO {
 		return entityManager;
 	}
 
+	/*
 	@SuppressWarnings("unchecked")
 	public List<String> getPseudos() {
 		List<String> pseudoList = getEntityManager().createQuery("SELECT u.pseudo FROM User u").getResultList();
 		return pseudoList;
 	}
+	*/
 	
 	@SuppressWarnings("unchecked")
 	public List<User> getUser(){
-		List<User> userList = getEntityManager().createQuery("SELECT u FROM User u").getResultList();
+		//List<User> userList = getEntityManager().createQuery("SELECT u FROM User u").getResultList();
+		
+		TypedQuery<User> query = getEntityManager().createQuery("SELECT u FROM User u",User.class);
+		List<User> userList = query.getResultList();
+		
 		return userList;
 	}
 

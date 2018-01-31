@@ -59,7 +59,7 @@ public class User implements Serializable {
 	}
 	
 	public String toJSON() {
-		return "{{\"id\":" + this.getId()+"}}";
+		return "{\"id\":" + "\"" + this.getId() + "\",\"pseudo\":" + "\"" + this.getPseudo() + "\",\"FirstName\":" + "\"" + this.getFirstname() + "\",\"LastName\":" + "\"" + this.getLastname() + "\"}";
 	}
 
 }
